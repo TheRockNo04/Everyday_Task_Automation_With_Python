@@ -15,7 +15,7 @@ def roll_no():
 			return i
 
 def cnvrt():
-	excel = win32.gencache.EnsureDispatch('Excel.Application')
+	excel = win32.Dispatch('Excel.Application')#excel = win32.gencache.EnsureDispatch('Excel.Application')
 	wb = excel.Workbooks.Open(DIR)
 	wb.SaveAs(DIR, FileFormat = 51)    #FileFormat = 51 is for .xlsx extension
 	wb.Close()                         #FileFormat = 56 is for .xls extension
@@ -92,10 +92,15 @@ def make_record():
 	rcrd.save(f'D:\\Piyush\\Roll\\{DATE.year}\\{DATE.month}\\Records.xlsx')
 
 def clnup():
-	os.remove(f'{DIR}.xlsx') #os.remove(f'{DIR}.xls')
+	os.remove(f'{DIR}.xlsx') 
+	#os.remove(f'{DIR}.xls')
 
 def print_it():
-    pass
+	print_que = input("Enter RollNo:- ")
+	if print_que.lower()=="y":
+		for _ in range(3):
+			os.startfile(f"D:\\Piyush\\Roll\\{DATE.year}\\{DATE.month}\\{roll_num}.xlsx", "print")
+A = input("Procced?")    
 
 ROLLPATH = 'C:\\Users\\shara\\Downloads\\'
 DATE = datetime.now()
@@ -122,6 +127,6 @@ for file in os.listdir(ROLLPATH):
 		move_over()
 		re_size()
 		save()
-		#make_record()
+		make_record()
 		clnup()
 		#print_it()
