@@ -2,7 +2,7 @@ import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from openpyxl import load_workbook
-import cv2 as cv
+
 
 def main():
     login()
@@ -22,13 +22,6 @@ def login():
     Password.send_keys('Narnari@36')
 
     captcha = browser.find_element(By.XPATH, '//*[@id="AuthenticationFG.VERIFICATION_CODE"]')
-    browser.save_screenshot('screenshot.png')
-    loc = captcha.location
-    image = cv.imread('screenshot.png', True)
-    out = cv.((150,60), image.depth, 3)
-    cv.SetImageROI(image, (loc['x'],loc['y'],150,60))
-    cv.Resize(image, out)
-    cv.SaveImage('out.jpg', out)
     captcha.send_keys(input())
 
     login = browser.find_element(By.XPATH, '//*[@id="VALIDATE_RM_PLUS_CREDENTIALS_CATCHA_DISABLED"]')
@@ -42,14 +35,14 @@ def login():
     
     time.sleep(5)
 
-def selctact():
-    pass
+#def slct_ac():
+#    pass
 
-def save_get():
-    pass
+#def save():
+#    pass
 
-def selecting():
-    pass
+#def selecting():
+#    pass
 
 if __name__ == "__main__":
     main()
