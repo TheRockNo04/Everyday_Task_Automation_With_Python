@@ -4,6 +4,7 @@ import win32com.client as win32
 from datetime import datetime
 import os
 
+
 def roll_no():
 	try:
 		os.listdir(f'D:\\Piyush\\Roll\\{DATE.year}\\{DATE.month}')
@@ -14,6 +15,7 @@ def roll_no():
 		if f'{i}.xlsx' not in os.listdir(f'D:\\Piyush\\Roll\\{DATE.year}\\{DATE.month}'):
 			return i
 
+
 def cnvrt():
 	excel = win32.gencache.EnsureDispatch('Excel.Application')
 	wb = excel.Workbooks.Open(DIR)
@@ -21,11 +23,13 @@ def cnvrt():
 	wb.Close()                         #FileFormat = 56 is for .xls extension
 	excel.Application.Quit()
 
+
 def book_count():
 	for i in range(14, 50):
 		if(rollsht.cell(row=i, column=3).value == "E-Banking Ref No"):
 			return i-14
-	
+
+
 def move_over():
 
 	#---Moving Everything
@@ -46,6 +50,7 @@ def move_over():
 	tmplsht.cell(row=45, column=3).value = rollsht.cell(row=mr+2, column=3).value
 	tmplsht.cell(row=45, column=10).value = rollsht.cell(row=mr+2, column=10).value
 
+
 def re_size():
 	style = Font(size=8, bold=False)
 	bdstyle = Font(size=16, bold=True)
@@ -63,9 +68,11 @@ def re_size():
 	for i in range(4, 8):
 		tmplsht.cell(row=i, column=9).font = bdstyle
 
+
 def save():
 	tmpl.save(f'D:\\Piyush\\Roll\\{DATE.year}\\{DATE.month}\\{roll_num}.xlsx')
 	print(f'{DIR} Saved as {roll_num}')
+
 
 def make_record():
 	try:
@@ -83,11 +90,16 @@ def make_record():
 	
 	rcrd.save(f'D:\\Piyush\\Roll\\{DATE.year}\\{DATE.month}\\Records.xlsx')
 
+
 def clnup():
 	os.remove(f'{DIR}.xlsx')#os.remove(f'{DIR}.xls')
 
+
 def print_roll():
 	pass
+
+
+
 
 ROLLPATH = 'C:\\Users\\shara\\Downloads\\'
 DATE = datetime.now()

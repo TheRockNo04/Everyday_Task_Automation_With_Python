@@ -100,7 +100,8 @@ def make_record():
 
 
 def clnup():
-	os.remove(f'{DIR}.xlsx')#os.remove(f'{DIR}.xls')
+	os.remove(f'{DIR}.xlsx')
+	os.remove(f'{DIR}.xls')
 
 
 def print_it():
@@ -108,7 +109,7 @@ def print_it():
 	if print_que.lower()=="y":
 		for _ in range(3):
 			os.startfile(f"D:\\Piyush\\Roll\\{DATE.year}\\{DATE.month}\\{roll_num}.xlsx", "print")
-	A = input("Procced?")
+	A = input("Procced? ")
 
 
 
@@ -141,4 +142,5 @@ for file in os.listdir(ROLLPATH):
 		save()
 		make_record()
 		clnup()
-		#print_it()
+
+print_it()
