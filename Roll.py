@@ -7,9 +7,9 @@ import os
 
 def roll_no():
 	try:
-		os.listdir(f'D:\\Piyush\\Roll\\{DATE.year}\\{DATE.month}')
+		os.listdir(f'D:\\Piyush\\Roll\\{DATE.year}\\{DATE.month}\\')
 	except FileNotFoundError:
-		os.mkdir(f'D:\\Piyush\\Roll\\{DATE.year}\\{DATE.month}')
+		os.mkdir(f'D:\\Piyush\\Roll\\{DATE.year}\\{DATE.month}\\')
 
 	for i in range(1,31):
 		if f'{i}.xlsx' not in os.listdir(f'D:\\Piyush\\Roll\\{DATE.year}\\{DATE.month}'):
@@ -100,14 +100,14 @@ def make_record():
 
 
 def clnup():
-	os.remove(f'{DIR}.xlsx')
-	os.remove(f'{DIR}.xls')
+	os.remove(f'{DIR}.xlsx')#os.remove(f'{DIR}.xls')
 
 
 def print_it():
-	for _ in range(3):
-		os.startfile(f"D:\\Piyush\\Roll\\{DATE.year}\\{DATE.month}\\{roll_num}.xlsx", "print")
-
+	while True:
+		a = int(input("Enter RollNo:- "))
+		for _ in range(3):
+			os.startfile(f"D:\\Piyush\\Roll\\{DATE.year}\\{DATE.month}\\{a}.xlsx", "print")
 
 
 
@@ -138,5 +138,6 @@ for file in os.listdir(ROLLPATH):
 		re_size()
 		save()
 		make_record()
-		clnup()
-		#print_it()
+		clnup()		
+
+#print_it()
