@@ -105,11 +105,8 @@ def clnup():
 
 
 def print_it():
-	print_que = input("Enter RollNo:- ")
-	if print_que.lower()=="y":
-		for _ in range(3):
-			os.startfile(f"D:\\Piyush\\Roll\\{DATE.year}\\{DATE.month}\\{roll_num}.xlsx", "print")
-	A = input("Procced? ")
+	for _ in range(3):
+		os.startfile(f"D:\\Piyush\\Roll\\{DATE.year}\\{DATE.month}\\{roll_num}.xlsx", "print")
 
 
 
@@ -142,5 +139,4 @@ for file in os.listdir(ROLLPATH):
 		save()
 		make_record()
 		clnup()
-
-print_it()
+		#print_it()
