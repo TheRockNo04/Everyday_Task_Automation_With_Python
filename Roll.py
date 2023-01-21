@@ -85,7 +85,7 @@ def make_record():
 	try:
 		rcrd = load_workbook(f'D:\\Piyush\\Roll\\{DATE.year}\\{DATE.month}\\Records.xlsx')
 	except FileNotFoundError:
-		rcrd = load_workbook(f'D:\\Piyush\\Roll\\Record_template.xlsx')
+		rcrd = load_workbook('Templates\\RollTamplate.xlsx') # D:\\Piyush\\Roll\\Record_template.xlsx')
 	rcrdsht = rcrd.active
 
 	for r in range(2, 30):
@@ -95,7 +95,6 @@ def make_record():
 			rcrdsht.cell(row=r, column=3).value = book_count()
 			rcrdsht.cell(row=r, column=4).value = tmplsht.cell(row=45, column=10).value
 			break
-	
 	rcrd.save(f'D:\\Piyush\\Roll\\{DATE.year}\\{DATE.month}\\Records.xlsx')
 
 
@@ -123,7 +122,7 @@ for file in os.listdir(ROLLPATH):
 		cnvrt()
 
 		#---Open Workbooks
-		tmpl = load_workbook('D:\\Piyush\\Roll\\RollTamplate.xlsx')
+		tmpl = load_workbook('Templates\\RollTamplate.xlsx')  # D:\\Piyush\\Roll\\RollTamplate.xlsx')
 		roll = load_workbook(DIR + '.xlsx')
 		tmplsht = tmpl.active
 		rollsht = roll.active
