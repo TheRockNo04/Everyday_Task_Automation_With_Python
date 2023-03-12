@@ -85,11 +85,11 @@ def make_record():
 	try:
 		rcrd = load_workbook(f'D:\\Piyush\\Roll\\{DATE.year}\\{DATE.month}\\Records.xlsx')
 	except FileNotFoundError:
-		rcrd = load_workbook('Templates\\RollTamplate.xlsx') # D:\\Piyush\\Roll\\Record_template.xlsx')
+		rcrd = load_workbook('Templates\\Record_template.xlsx') # D:\\Piyush\\Roll\\Record_template.xlsx')
 	rcrdsht = rcrd.active
 
 	for r in range(2, 30):
-		if rcrdsht.cell(row=r, column=1).value == None:	
+		if rcrdsht.cell(row=r, column=1).value:
 			rcrdsht.cell(row=r, column=1).value = roll_no() - 1
 			rcrdsht.cell(row=r, column=2).value = tmplsht.cell(row=6, column=9).value
 			rcrdsht.cell(row=r, column=3).value = book_count()
@@ -100,7 +100,7 @@ def make_record():
 
 def clnup():
 	os.remove(f'{DIR}.xlsx')
-	os.remove(f'{DIR}.xls')
+	# os.remove(f'{DIR}.xls')
 
 
 def print_it():
